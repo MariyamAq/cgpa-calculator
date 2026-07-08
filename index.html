@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>CGPA Calculator</title>
+</head>
+<body>
+    <div class="card">
+        <h1>CGPA Calculator</h1>
+        <div id="input-area">
+            <input type="text" id="subject" placeholder="Subject Name">
+            <input type="number" id="credits" placeholder="Credits">
+            <input type="number" id="grade" placeholder="Grade (0-10)">
+            <button onclick="addSubject()">Add Subject</button>
+        </div>
+        <table id="subject-table">
+            <tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>
+        </table>
+        <button id="calc-btn" onclick="calculate()">Calculate Result</button>
+        <h2 id="result">GPA: 0.00</h2>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
