@@ -13,9 +13,17 @@ function addSubject() {
 
 function updateTable() {
     const table = document.getElementById('subject-table');
-    table.innerHTML = "<tr><th>Subject</th><th>Credits</th><th>Grade</th></tr>";
-    subjects.forEach(s => {
-        table.innerHTML += `<tr><td>${s.name}</td><td>${s.credits}</td><td>${s.grade}</td></tr>`;
+    // Keep the header, reset everything else
+    table.innerHTML = "<tr><th>Subject</th><th>Credits</th><th>Grade</th><th>Action</th></tr>";
+    
+    subjects.forEach((s, index) => {
+        table.innerHTML += `
+            <tr>
+                <td>${s.name}</td>
+                <td>${s.credits}</td>
+                <td>${s.grade}</td>
+                <td><button onclick="deleteSubject(${index})" style="background:red; padding:5px;">Delete</button></td>
+            </tr>`;
     });
 }
 
@@ -28,4 +36,8 @@ function calculate() {
     });
     const gpa = totalPoints / totalCredits;
     document.getElementById('result').innerText = `GPA: ${gpa.toFixed(2)}`;
+}
+function deleteSubject(index) {
+    subjects.splice(index, 1); // Removes 1 item at the specific index
+    updateTable(); // Re-renders the table without that item
 }
